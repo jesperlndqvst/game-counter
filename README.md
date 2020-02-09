@@ -1,5 +1,5 @@
 # game-counter
-A minimal, easy to use and responsive game counter for all types of games. No installation required, use it directly in your browser
+A minimal, easy to use and responsive game counter for all types of games. No installation required, use it directly in your browser.
 
 ## How to use it
 1. Clone this repo in GitHub Desktop, in your terminal or got to: https://game-counter.netlify.com/
