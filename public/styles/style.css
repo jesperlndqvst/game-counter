@@ -54,6 +54,7 @@ body {
   touch-action: manipulation;
   cursor: pointer;
   outline: none;
+  user-select: none;
 }
 
 .btn:active {
