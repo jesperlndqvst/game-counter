@@ -5,7 +5,6 @@ const updateScore = () => {
     const playerScoreEl = player.querySelector('.player__score');
     const playerScore = parseInt(playerScoreEl.textContent);
     const modifier = event.target.dataset.key;
-    console.log(modifier);
     let result;
     
     switch (modifier) {

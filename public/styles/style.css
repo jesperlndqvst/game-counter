@@ -6,11 +6,13 @@
 
 body {
   font-family: sans-serif;
+  user-select: none;
 }
 
 :root {
   --color-player1: #cc1759;
   --color-player2: #071750;
+  --color-grey: #aaacad;
 }
 
 .counter {
@@ -19,13 +21,12 @@ body {
   color: #ffffff;
 }
 
-.player1,
-.player2 {
+.player {
   display: flex;
   flex-direction: column;
   text-align: center;
   height: 50%;
-  font-size: 7rem;
+  font-size: 9rem;
 }
 
 .player1 {
@@ -37,18 +38,43 @@ body {
   background-color: var(--color-player2);
 }
 
-.buttons-container {
+.btns-container {
   display: flex;
   justify-content: space-around;
   margin-top: 4rem;
 }
 
 .btn {
-  font-size: 2rem;
+  font-size: 2.4rem;
   text-transform: uppercase;
   background-color: #ffffff;
   width: 5rem;
   border: none;
   border-radius: 1.2rem;
   touch-action: manipulation;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:active {
+  background-color: var(--color-grey);
+  transform: translateY(4px);
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+  .player1 {
+    transform: none;
+  }
+
+  .btns-container {
+    margin: auto;
+    width: 800px;
+  }
+
+  .btn {
+    font-size: 4rem;
+    width: 10rem;
+  }
 }
