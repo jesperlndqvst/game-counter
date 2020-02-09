@@ -41,7 +41,7 @@ body {
 .btns-container {
   display: flex;
   justify-content: space-around;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .btn {
