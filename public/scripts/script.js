@@ -1,38 +1,34 @@
-const submitBtnEls = document.querySelectorAll('.btn');
+const btnEls = document.querySelectorAll('.btn');
 
 const updateScore = () => {
-    const player = event.target.closest('div');
-    const playerInputEl = player.querySelector('input');
-    let playerInput = player.querySelector('input').value;
-    const playerScoreEl = player.querySelector('span');
-    let playerScore = parseInt(player.querySelector('span').textContent);
-    const modifier = playerInput[0];
-    const numbers = parseInt(playerInput.slice(1));
+    const player = event.target.closest('.player');
+    const playerScoreEl = player.querySelector('.player__score');
+    const playerScore = parseInt(playerScoreEl.textContent);
+    const modifier = event.target.dataset.key;
+    console.log(modifier);
     let result;
     
     switch (modifier) {
-        case "+":
-            result = playerScore + numbers;
+        case "+1":
+            result = playerScore + 1;
             break;
-        case "-":
-            result = playerScore - numbers;
+        case "+10":
+            result = playerScore + 10;
             break;
-        case "*":
-            result = playerScore * numbers;
+        case "-1":
+            result = playerScore - 1;
             break;
-        case "/":
-            result = playerScore / numbers;
+        case "-10":
+            result = playerScore - 10;
             break;
         default:
             console.log('Choose a modifier');
             break;
     }
     playerScoreEl.textContent = result;
-    playerInputEl.value = "";
 } 
 
-
-submitBtnEls.forEach(btn => {
+btnEls.forEach(btn => {
     btn.addEventListener('click', updateScore);
 });
 

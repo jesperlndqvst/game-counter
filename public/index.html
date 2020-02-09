@@ -8,15 +8,23 @@
   </head>
   <body>
     <div class="counter">
-      <div class="player1">
-        <span class="player1__score">0</span>
-        <input class="player1__input" type="text" />
-        <button class="btn" type="submit">Submit</button>
+      <div class="player player1">
+        <span class="player__score player1__score">0</span>
+        <div class="buttons-container">
+          <button class="btn" data-key="-10">-10</button>
+          <button class="btn" data-key="-1">-1</button>
+          <button class="btn" data-key="+1">+1</button>
+          <button class="btn" data-key="+10">+10</button>
+        </div>
       </div>
-      <div class="player2">
-        <span class="player2__score">0</span>
-        <input class="player2__input" type="text" />
-        <button class="btn" type="submit">Submit</button>
+      <div class="player player2">
+        <span class="player__score player2__score">0</span>
+        <div class="buttons-container">
+          <button class="btn" data-key="-10">-10</button>
+          <button class="btn" data-key="-1">-1</button>
+          <button class="btn" data-key="+1">+1</button>
+          <button class="btn" data-key="+10">+10</button>
+        </div>
       </div>
     </div>
     <script src="/scripts/script.js"></script>
