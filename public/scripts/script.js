@@ -20,9 +20,6 @@ const updateScore = () => {
         case "-10":
             result = playerScore - 10;
             break;
-        default:
-            console.log('Choose a modifier');
-            break;
     }
     playerScoreEl.textContent = result;
 } 
