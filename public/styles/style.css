@@ -32,9 +32,13 @@ body {
   height: 50vh;
   min-width: 100vw;
   scroll-snap-align: start;
-  font-size: 9rem;
+
   border-right: 1px;
   text-align: center;
+}
+
+.player__score {
+  font-size: 9rem;
 }
 
 .player1,
@@ -88,12 +92,18 @@ body {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .player1, .player3, .player5 {
+  .player1,
+  .player3,
+  .player5 {
     transform: none;
   }
 
+  .player > p {
+    font-size: 3rem;
+  }
+
   .btns-container {
-    margin: auto;
+    margin: 2rem auto;
     width: 800px;
   }
 
