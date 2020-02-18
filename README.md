@@ -9,7 +9,7 @@ A minimal, easy to use and responsive game counter for all types of games. No in
 <img src="https://i.imgur.com/Sy5gqyF.png" width="33%" />
 
 ## Todo
-- [ ] Add support for more players.
+- [x] Add support for six players.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
