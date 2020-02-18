@@ -7,35 +7,59 @@
 body {
   font-family: sans-serif;
   user-select: none;
+  overflow-y: hidden;
 }
 
 :root {
   --color-player1: #cc1759;
   --color-player2: #071750;
+  --color-player3: #f39302;
+  --color-player4: #7cd85e;
+  --color-player5: #0a2a50;
+  --color-player6: #ffde7f;
   --color-grey: #aaacad;
 }
 
 .counter {
-  height: 100vh;
-  width: 100vw;
   color: #ffffff;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
 }
 
 .player {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  height: 50%;
+  height: 50vh;
+  min-width: 100vw;
+  scroll-snap-align: start;
   font-size: 9rem;
+  border-right: 1px;
+  text-align: center;
+}
+
+.player1,
+.player3,
+.player5 {
+  transform: rotate(180deg);
 }
 
 .player1 {
   background-color: var(--color-player1);
-  transform: rotate(180deg);
 }
-
 .player2 {
   background-color: var(--color-player2);
+}
+.player3 {
+  background-color: var(--color-player3);
+}
+.player4 {
+  background-color: var(--color-player4);
+}
+.player5 {
+  background-color: var(--color-player5);
+}
+.player6 {
+  background-color: var(--color-player6);
 }
 
 .btns-container {
@@ -64,7 +88,7 @@ body {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .player1 {
+  .player1, .player3, .player5 {
     transform: none;
   }
 
