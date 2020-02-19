@@ -123,7 +123,6 @@ body {
 .active {
   font-weight: bold;
   background-color: var(--color-primary);
-  transition: all 0.3s ease-in;
 }
 
 /* Large devices (desktops, 992px and up) */
