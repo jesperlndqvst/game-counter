@@ -27,6 +27,7 @@ body {
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+  touch-action: manipulation;
 }
 
 .start {
