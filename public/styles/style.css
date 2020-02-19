@@ -32,6 +32,7 @@ body {
 .start {
   background-color: var(--color-primary);
   position: fixed; 
+  top: 4rem;
   height: 32rem;
   width: 90vw;
   border-radius: 1rem;
@@ -52,7 +53,6 @@ body {
   margin-bottom: 1rem;
   border-radius: 0.4rem;
   padding: 0.7rem;
-  text-transform: uppercase;
 }
 
 .start form button {
@@ -60,7 +60,7 @@ body {
   text-transform: uppercase;
   border: none;
   border-radius: 0.8rem;
-  padding: 1rem;
+  padding: 0.8rem;
   color: var(--color-white);
   font-size: 1rem;
 }
