@@ -32,7 +32,7 @@ body {
 .start {
   background-color: var(--color-primary);
   position: fixed; 
-  top: 4rem;
+  top: 2rem;
   height: 32rem;
   width: 90vw;
   border-radius: 1rem;
