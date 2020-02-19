@@ -4,8 +4,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none;
   outline: none;
+  user-select: none;
 }
 
 :root {
@@ -82,6 +82,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  cursor: pointer;
 }
 
 .player {
@@ -108,6 +109,7 @@ body {
   border-radius: 1rem;
   border: none;
   cursor: pointer;
+  user-select: none;
   background-color: var(--color-primary);
   color: var(--color-white);
 }
@@ -116,10 +118,12 @@ body {
 .btn:active {
   background-color: var(--color-grey);
   transform: translateY(4px);
+  user-select: none;
 }
 .active {
   font-weight: bold;
   background-color: var(--color-primary);
+  transition: all 0.3s ease-in;
 }
 
 /* Large devices (desktops, 992px and up) */
