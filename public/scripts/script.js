@@ -11,7 +11,7 @@ const confirmEl = document.querySelector('.confirm');
 const confirmBtns = document.querySelectorAll('.confirm__btn');
 
 confirmEl.classList.add('hidden');
-counter.style.visability = 'hidden';
+counter.classList.add('hidden');
 let playerData = [];
 let playerScore;
 let activePlayer;
@@ -23,7 +23,7 @@ formEl.addEventListener('submit', event => {
     if (input.value) {
       playerData.push(input.value);
       startEl.classList.add('hidden');
-      counter.style.visability = 'visible';
+      counter.classList.remove('hidden');
       input.value = '';
     }
   });
@@ -116,7 +116,7 @@ const newGame = () => {
   playerScore = '';
   result = 0;
   startEl.classList.remove('hidden');
-  counter.style.visability = 'hidden';
+  counter.classList.add('hidden');
   init();
 };
 
