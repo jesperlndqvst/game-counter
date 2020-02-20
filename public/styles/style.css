@@ -74,7 +74,7 @@ body {
   width: 100%;
   flex-direction: column;
   justify-content: space-around;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   align-items: center;
   font-size: 2rem;
 }
@@ -94,6 +94,8 @@ body {
   border-radius: 1rem;
   color: var(--color-white);
   white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
 }
 
 
@@ -134,7 +136,7 @@ body {
   color: var(--color-white);
 }
 
-.btn:active {
+.btn:active, .restart button:active {
   background-color: var(--color-grey);
   transform: translateY(4px);
   user-select: none;
