@@ -14,25 +14,66 @@
     <div class="start">
       <form>
         <label for="player1">Player1</label>
-        <input type="text" id="player1" name="player1" placeholder="Username" autocomplete="off"/>
+        <input
+          type="text"
+          id="player1"
+          name="player1"
+          placeholder="Username"
+          autocomplete="off"
+        />
         <label for="player2">Player2</label>
-        <input type="text" id="player2" name="player2" placeholder="Username" autocomplete="off"/>
+        <input
+          type="text"
+          id="player2"
+          name="player2"
+          placeholder="Username"
+          autocomplete="off"
+        />
         <label for="player3">Player3</label>
-        <input type="text" id="player3" name="player3" placeholder="Username" autocomplete="off"/>
+        <input
+          type="text"
+          id="player3"
+          name="player3"
+          placeholder="Username"
+          autocomplete="off"
+        />
         <label for="player4">Player4</label>
-        <input type="text" id="player4" name="player4" placeholder="Username" autocomplete="off"/>
+        <input
+          type="text"
+          id="player4"
+          name="player4"
+          placeholder="Username"
+          autocomplete="off"
+        />
         <label for="player5">Player5</label>
-        <input type="text" id="player5" name="player5" placeholder="Username" autocomplete="off"/>
+        <input
+          type="text"
+          id="player5"
+          name="player5"
+          placeholder="Username"
+          autocomplete="off"
+        />
         <label for="player6">Player6</label>
-        <input type="text" id="player6" name="player6" placeholder="Username" autocomplete="off"/>
+        <input
+          type="text"
+          id="player6"
+          name="player6"
+          placeholder="Username"
+          autocomplete="off"
+        />
         <button type="submit">Start</button>
       </form>
     </div>
 
     <div class="counter">
       <div class="restart">
-        <button class="new-game" type="submit">New Game</button>
-        <button class="reset-score" type="submit">Reset</button>
+        <button class="new-game" data-restart="new-game" type="submit">New Game</button>
+        <button class="reset-score" data-restart="reset-score" type="submit">Reset</button>
+      </div>
+      <div class="confirm">
+        <p>Are you Sure?</p>
+        <button class="confirm__btn" data-confirm="yes">Yes!</button>
+        <button class="confirm__btn" data-confirm="no">No!</button>
       </div>
       <div class="players"></div>
       <div class="btns-container">

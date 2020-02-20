@@ -4,9 +4,14 @@ const startEl = document.querySelector('.start');
 const formEl = startEl.querySelector('form');
 const inputEls = formEl.querySelectorAll('input');
 const counter = document.querySelector('.counter');
+const restartEl = document.querySelector('.restart');
 const resetBtn = document.querySelector('.reset-score');
 const newGameBtn = document.querySelector('.new-game');
-counter.style.visibility = 'hidden';
+const confirmEl = document.querySelector('.confirm');
+const confirmBtns = document.querySelectorAll('.confirm__btn');
+
+confirmEl.classList.add('hidden');
+counter.classList.add('hidden');
 let playerData = [];
 let playerScore;
 let activePlayer;
@@ -17,8 +22,8 @@ formEl.addEventListener('submit', event => {
   inputEls.forEach(input => {
     if (input.value) {
       playerData.push(input.value);
-      startEl.style.visibility = 'hidden';
-      counter.style.visibility = 'visible';
+      startEl.classList.add('hidden');
+      counter.classList.remove('hidden');
       input.value = '';
     }
   });
@@ -77,8 +82,8 @@ const eventListeners = () => {
   });
 
   btnEls.forEach(btn => btn.addEventListener('click', handleClickEvent));
-  resetBtn.addEventListener('click', resetScore);
-  newGameBtn.addEventListener('click', newGame);
+  resetBtn.addEventListener('click', isSure);
+  newGameBtn.addEventListener('click', isSure);
 };
 
 const handleClickEvent = () => {
@@ -110,7 +115,28 @@ const newGame = () => {
   playersEl.innerHTML = '';
   playerScore = '';
   result = 0;
-  startEl.style.visibility = 'visible';
-  counter.style.visibility = 'hidden';
+  startEl.classList.remove('hidden');
+  counter.classList.add('hidden');
   init();
+};
+
+const isSure = event => {
+  restartEl.classList.add('hidden');
+  confirmEl.classList.remove('hidden');
+  let currentEvent = event.target.dataset.restart;
+
+  confirmBtns.forEach(btn => {
+    btn.addEventListener('click', event => {
+      if (event.target.dataset.confirm === 'yes') {
+        if (currentEvent === 'new-game') {
+          newGame();
+        } else if (currentEvent === 'reset-score') {
+          resetScore();
+        }
+      }
+      restartEl.classList.remove('hidden');
+      confirmEl.classList.add('hidden');
+      currentEvent = '';
+    });
+  });
 };
