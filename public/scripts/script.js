@@ -8,8 +8,8 @@ const resetBtn = document.querySelector('.reset-score');
 const newGameBtn = document.querySelector('.new-game');
 counter.style.visibility = 'hidden';
 let playerData = [];
-let activePlayer;
 let playerScore;
+let activePlayer;
 let result;
 
 formEl.addEventListener('submit', event => {
@@ -90,6 +90,10 @@ const handleClickEvent = () => {
 const init = () => {
   generatePlayers();
   eventListeners();
+  activePlayer = playersEl.querySelector('.player');
+  if (activePlayer) {
+    activePlayer.classList.add('active');
+  }
 };
 
 const resetScore = () => {
