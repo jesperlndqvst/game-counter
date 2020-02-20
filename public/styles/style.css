@@ -151,11 +151,17 @@ button {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+
+  .restart button, .confirm__btn {
+    width: 12rem;
+    height: 2.8rem;
+  }
+
   .start {
     top: 8rem;
   }
   .btn {
     width: 10rem;
-    padding: 2rem;
+    padding: 0.8rem;
   }
 }
