@@ -78,6 +78,13 @@ body {
   font-size: 2rem;
 }
 
+
+.restart button {
+  width: 5rem;
+  height: 2rem;
+}
+
+
 .players {
   display: flex;
   flex-direction: column;
