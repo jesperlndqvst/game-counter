@@ -122,9 +122,8 @@ const init = () => {
   generatePlayers();
   eventListeners();
   activePlayer = playersEl.querySelector('.player');
-  if (activePlayer) {
-    activePlayer.classList.add('active');
-  }
+  activePlayer.classList.add('active');
+  
 };
 
 const resetScore = () => {
@@ -142,7 +141,9 @@ const newGame = () => {
   playerScore = '';
   result = 0;
   startEl.classList.remove('hidden');
+  confirmEl.classList.add('hidden');
   counter.classList.add('hidden');
+  restartEl.classList.remove('hidden');
   for (let i = 2; i < inputEls.length; i++) {
     inputEls[i].classList.add('hidden');
   }
