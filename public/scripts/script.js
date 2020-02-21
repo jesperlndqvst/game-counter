@@ -9,6 +9,7 @@ const resetBtn = document.querySelector('.reset-score');
 const newGameBtn = document.querySelector('.new-game');
 const confirmEl = document.querySelector('.confirm');
 const confirmBtns = document.querySelectorAll('.confirm__btn');
+const playersBtns = document.querySelectorAll('.players-btn');
 
 confirmEl.classList.add('hidden');
 counter.classList.add('hidden');
@@ -17,18 +18,43 @@ let playerScore;
 let activePlayer;
 let result;
 
-formEl.addEventListener('submit', event => {
-  event.preventDefault();
-  inputEls.forEach(input => {
-    if (input.value) {
-      playerData.push(input.value);
-      startEl.classList.add('hidden');
-      counter.classList.remove('hidden');
-      input.value = '';
-    }
+for (let i = 2; i < inputEls.length; i++) {
+  inputEls[i].classList.add('hidden');
+}
+
+const startGame = () => {
+  formEl.addEventListener('submit', event => {
+    event.preventDefault();
+    inputEls.forEach(input => {
+      if (input.value) {
+        playerData.push(input.value);
+        startEl.classList.add('hidden');
+        counter.classList.remove('hidden');
+        input.value = '';
+      }
+    });
+    init();
   });
-  init();
-});
+};
+
+const choosePlayers = () => {
+  playersBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      for (let i = 0; i < playersBtns.length; i++) {
+        playersBtns[i].classList.remove('players-btn-active');
+      }
+      btn.classList.add('players-btn-active');
+      const players = parseInt(btn.dataset.players);
+      inputEls.forEach(input => input.classList.add('hidden'));
+      for (let i = players - 1; i >= 0; i--) {
+        inputEls[i].classList.remove('hidden');
+      }
+    });
+  });
+  startGame();
+};
+
+choosePlayers();
 
 const createPlayerHTML = player => {
   return `<div class="player">
@@ -117,6 +143,10 @@ const newGame = () => {
   result = 0;
   startEl.classList.remove('hidden');
   counter.classList.add('hidden');
+  for (let i = 2; i < inputEls.length; i++) {
+    inputEls[i].classList.add('hidden');
+  }
+  playersBtns[0].classList.add('players-btn-active');
   init();
 };
 
