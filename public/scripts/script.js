@@ -122,8 +122,9 @@ const init = () => {
   generatePlayers();
   eventListeners();
   activePlayer = playersEl.querySelector('.player');
-  activePlayer.classList.add('active');
-  
+  if (activePlayer) {
+    activePlayer.classList.add('active');
+  }
 };
 
 const resetScore = () => {
