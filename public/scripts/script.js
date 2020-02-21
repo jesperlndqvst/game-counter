@@ -146,6 +146,7 @@ const newGame = () => {
   for (let i = 2; i < inputEls.length; i++) {
     inputEls[i].classList.add('hidden');
   }
+  playersBtns.forEach(btn => btn.classList.remove('players-btn-active'));
   playersBtns[0].classList.add('players-btn-active');
   init();
 };
