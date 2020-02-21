@@ -59,14 +59,14 @@ const updateScore = player => {
     case '+1':
       result = playerScore + 1;
       break;
-    case '+10':
-      result = playerScore + 10;
+    case '+5':
+      result = playerScore + 5;
       break;
     case '-1':
       result = playerScore - 1;
       break;
-    case '-10':
-      result = playerScore - 10;
+    case '-5':
+      result = playerScore - 5;
       break;
   }
   playerScoreEl.textContent = result;
