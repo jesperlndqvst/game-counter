@@ -16,8 +16,6 @@
   --color-white: #f8f8f8;
 }
 
-
-
 body {
   font-family: 'Fira Mono', monospace;
   height: 100%;
@@ -58,7 +56,7 @@ button {
 
 .players-btns-container {
   padding: 1rem;
-  margin: auto;
+  margin: 0.5rem auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -96,7 +94,6 @@ button {
   margin-bottom: 1rem;
   border-radius: 0.4rem;
   padding: 0.7rem;
-
 }
 
 .start form button {
@@ -122,7 +119,8 @@ button {
   justify-content: space-around;
 }
 
-.restart button, .confirm__btn {
+.restart button,
+.confirm__btn {
   height: 2rem;
   width: 9rem;
   font-size: 1rem;
@@ -143,7 +141,7 @@ button {
   min-width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.8rem;
 }
 
 .btns-container {
@@ -177,8 +175,8 @@ button {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-
-  .restart button, .confirm__btn {
+  .restart button,
+  .confirm__btn {
     width: 12rem;
     height: 2.8rem;
   }
