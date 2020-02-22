@@ -16,9 +16,9 @@ counter.classList.add('hidden');
 let playerData = [];
 let playerScore;
 let activePlayer;
+let storageArray = [];
 let result;
 let player;
-let storageArray = [];
 
 const getFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem('players'));
@@ -35,7 +35,11 @@ const startGame = () => {
     event.preventDefault();
     inputEls.forEach(input => {
       if (input.value) {
-        playerData.push(input.value);
+        let player = {
+          name: input.value,
+          score: 0
+        };
+        playerData.push(player);
         startEl.classList.add('hidden');
         counter.classList.remove('hidden');
         addToLocalStorage(input.value);
@@ -63,31 +67,40 @@ const choosePlayers = () => {
   startGame();
 };
 
-choosePlayers();
+if (!lsData) {
+  choosePlayers();
+} else {
+  playerData = lsData;
+  startEl.classList.add('hidden');
+  counter.classList.remove('hidden');
+  storageArray = lsData;
+  init();
+}
 
-const createPlayerHTML = player => {
+function createPlayerHTML(player) {
   return `<div class="player">
-          <p class="player__name">${player}</p>
-          <span class="player__score ">0</span>
+          <p class="player__name">${player.name}</p>
+          <span class="player__score ">${player.score}</span>
           </div>`;
-};
+}
 
-const stringToHTML = str => {
+function stringToHTML(str) {
   const div = document.createElement('div');
   div.innerHTML = str;
   return div.firstChild;
-};
+}
 
-const generatePlayers = () => {
+function generatePlayers() {
   playerData.forEach(player => {
     const element = createPlayerHTML(player);
     playersEl.appendChild(stringToHTML(element));
   });
-};
+}
 
 const updateScore = player => {
   const playerScoreEl = player.querySelector('.player__score');
   const playerName = player.querySelector('.player__name').textContent;
+  console.log(storageArray);
   const currentPlayer = storageArray.find(
     element => element.name === playerName
   );
@@ -127,7 +140,7 @@ const updateLocalStorage = (player, score) => {
   localStorage.setItem('players', JSON.stringify(storageArray));
 };
 
-const eventListeners = () => {
+function eventListeners() {
   playersEl.addEventListener('click', () => {
     if (activePlayer) {
       activePlayer.classList.remove('active');
@@ -139,22 +152,22 @@ const eventListeners = () => {
   btnEls.forEach(btn => btn.addEventListener('click', handleClickEvent));
   resetBtn.addEventListener('click', isSure);
   newGameBtn.addEventListener('click', isSure);
-};
+}
 
-const handleClickEvent = () => {
+function handleClickEvent() {
   if (activePlayer) {
     updateScore(activePlayer);
   }
-};
+}
 
-const init = () => {
+function init() {
   generatePlayers();
   eventListeners();
   activePlayer = playersEl.querySelector('.player');
   if (activePlayer) {
     activePlayer.classList.add('active');
   }
-};
+}
 
 const resetScore = () => {
   const playerScores = document.querySelectorAll('.player__score');
@@ -186,7 +199,7 @@ const newGame = () => {
   init();
 };
 
-const isSure = event => {
+function isSure(event) {
   restartEl.classList.add('hidden');
   confirmEl.classList.remove('hidden');
   let currentEvent = event.target.dataset.restart;
@@ -205,4 +218,4 @@ const isSure = event => {
       currentEvent = '';
     });
   });
-};
+}
