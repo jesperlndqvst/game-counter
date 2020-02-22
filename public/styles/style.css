@@ -19,6 +19,7 @@
 body {
   font-family: 'Fira Mono', monospace;
   height: 100%;
+  max-width: 900px;
   margin: auto;
   background-color: var(--color-secondary);
   color: var(--color-white);
@@ -175,6 +176,12 @@ button {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+
+.players-btn {
+    width: 5rem;
+    height: 2.5rem;
+}
+
   .restart button,
   .confirm__btn {
     width: 12rem;
