@@ -195,8 +195,7 @@ const newGame = () => {
   playersBtns[0].classList.add('players-btn-active');
   localStorage.removeItem('players');
   storageArray = [];
-  choosePlayers();
-  eventListeners();
+  init();
 };
 
 function isSure(event) {
