@@ -17,6 +17,14 @@ let playerData = [];
 let playerScore;
 let activePlayer;
 let result;
+let player;
+let storageArray = [];
+
+const getFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('players'));
+};
+
+const lsData = getFromLocalStorage();
 
 for (let i = 2; i < inputEls.length; i++) {
   inputEls[i].classList.add('hidden');
@@ -30,6 +38,7 @@ const startGame = () => {
         playerData.push(input.value);
         startEl.classList.add('hidden');
         counter.classList.remove('hidden');
+        addToLocalStorage(input.value);
         input.value = '';
       }
     });
@@ -78,6 +87,10 @@ const generatePlayers = () => {
 
 const updateScore = player => {
   const playerScoreEl = player.querySelector('.player__score');
+  const playerName = player.querySelector('.player__name').textContent;
+  const currentPlayer = storageArray.find(
+    element => element.name === playerName
+  );
   playerScore = parseInt(playerScoreEl.textContent);
   const modifier = event.target.dataset.key;
 
@@ -96,6 +109,22 @@ const updateScore = player => {
       break;
   }
   playerScoreEl.textContent = result;
+  updateLocalStorage(currentPlayer, result);
+};
+
+const addToLocalStorage = username => {
+  player = {
+    name: username,
+    score: 0
+  };
+  storageArray.push(player);
+  localStorage.setItem('players', JSON.stringify(storageArray));
+};
+
+const updateLocalStorage = (player, score) => {
+  player.score = score;
+
+  localStorage.setItem('players', JSON.stringify(storageArray));
 };
 
 const eventListeners = () => {
@@ -129,8 +158,10 @@ const init = () => {
 
 const resetScore = () => {
   const playerScores = document.querySelectorAll('.player__score');
-  playerScores.forEach(score => {
-    score.textContent = 0;
+  playerScores.forEach(score => (score.textContent = 0));
+  storageArray.forEach(player => {
+    player.score = 0;
+    updateLocalStorage(player, player.score);
   });
 };
 
@@ -150,6 +181,8 @@ const newGame = () => {
   }
   playersBtns.forEach(btn => btn.classList.remove('players-btn-active'));
   playersBtns[0].classList.add('players-btn-active');
+  localStorage.removeItem('players');
+  storageArray = [];
   init();
 };
 
