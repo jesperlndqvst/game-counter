@@ -100,7 +100,6 @@ function generatePlayers() {
 const updateScore = player => {
   const playerScoreEl = player.querySelector('.player__score');
   const playerName = player.querySelector('.player__name').textContent;
-  console.log(storageArray);
   const currentPlayer = storageArray.find(
     element => element.name === playerName
   );
@@ -196,7 +195,8 @@ const newGame = () => {
   playersBtns[0].classList.add('players-btn-active');
   localStorage.removeItem('players');
   storageArray = [];
-  init();
+  choosePlayers();
+  eventListeners();
 };
 
 function isSure(event) {
