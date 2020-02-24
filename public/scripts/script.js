@@ -71,6 +71,7 @@ const choosePlayers = () => {
   });
   startGame();
 };
+choosePlayers();
 
 const createPlayerHTML = player => {
   return `<div class="player">
@@ -197,7 +198,6 @@ const init = () => {
   getFromLocalStorage();
   generatePlayers();
   eventListeners();
-  choosePlayers();
   activePlayer = playersEl.querySelector('.player');
   if (activePlayer) {
     activePlayer.classList.add('active');
