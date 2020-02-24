@@ -17,7 +17,8 @@ const startGame = () => {
       if (input.value) {
         let player = {
           name: input.value,
-          score: 0
+          score: 0,
+          active: false
         };
         playerData.push(player);
         startEl.classList.add('hidden');
@@ -49,7 +50,7 @@ const choosePlayers = () => {
 choosePlayers();
 
 const createPlayerHTML = player => {
-  return `<div class="player">
+  return `<div class="player ${player.active ? 'active' : ''}">
           <p class="player__name">${player.name}</p>
           <span class="player__score ">${player.score}</span>
           </div>`;
@@ -91,6 +92,12 @@ const updateLocalStorage = (player, score) => {
   localStorage.setItem('players', JSON.stringify(storageArray));
 };
 
+const updateLocalStorageActive = player => {
+  storageArray.forEach(player => (player.active = false));
+  player.active = true;
+  localStorage.setItem('players', JSON.stringify(storageArray));
+};
+
 const eventListeners = () => {
   playersEl.addEventListener('click', currentPlayer);
   btnEls.forEach(btn => btn.addEventListener('click', handleClickEvent));
@@ -110,6 +117,11 @@ const currentPlayer = () => {
   }
   activePlayer = event.target.closest('.player');
   activePlayer.classList.add('active');
+  const playerName = activePlayer.querySelector('.player__name').textContent;
+  const currentPlayer = storageArray.find(
+    element => element.name === playerName
+  );
+  updateLocalStorageActive(currentPlayer);
 };
 
 const resetScore = () => {
@@ -159,13 +171,22 @@ const chooseReset = event => {
   });
 };
 
+const setActivePlayer = () => {
+  let lastActivePlayer = playersEl.querySelector('.active');
+  if (lastActivePlayer) {
+    activePlayer = lastActivePlayer;
+  } else {
+    activePlayer = playersEl.querySelector('.player');
+    if (activePlayer) {
+      activePlayer.classList.add('active');
+    }
+  }
+};
+
 const init = () => {
   getFromLocalStorage();
   generatePlayers();
   eventListeners();
-  activePlayer = playersEl.querySelector('.player');
-  if (activePlayer) {
-    activePlayer.classList.add('active');
-  }
+  setActivePlayer();
 };
 init();
