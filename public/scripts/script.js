@@ -19,16 +19,21 @@ let activePlayer;
 let storageArray = [];
 let result;
 let player;
-
-const getFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('players'));
-};
-
-const lsData = getFromLocalStorage();
-
+let lsData;
 for (let i = 2; i < inputEls.length; i++) {
   inputEls[i].classList.add('hidden');
 }
+
+const getFromLocalStorage = () => {
+  lsData = JSON.parse(localStorage.getItem('players'));
+  if (!lsData) {
+  } else {
+    playerData = lsData;
+    startEl.classList.add('hidden');
+    counter.classList.remove('hidden');
+    storageArray = lsData;
+  }
+};
 
 const startGame = () => {
   formEl.addEventListener('submit', event => {
@@ -67,35 +72,25 @@ const choosePlayers = () => {
   startGame();
 };
 
-if (!lsData) {
-  choosePlayers();
-} else {
-  playerData = lsData;
-  startEl.classList.add('hidden');
-  counter.classList.remove('hidden');
-  storageArray = lsData;
-  init();
-}
-
-function createPlayerHTML(player) {
+const createPlayerHTML = player => {
   return `<div class="player">
           <p class="player__name">${player.name}</p>
           <span class="player__score ">${player.score}</span>
           </div>`;
-}
+};
 
-function stringToHTML(str) {
+const stringToHTML = str => {
   const div = document.createElement('div');
   div.innerHTML = str;
   return div.firstChild;
-}
+};
 
-function generatePlayers() {
+const generatePlayers = () => {
   playerData.forEach(player => {
     const element = createPlayerHTML(player);
     playersEl.appendChild(stringToHTML(element));
   });
-}
+};
 
 const updateScore = player => {
   const playerScoreEl = player.querySelector('.player__score');
@@ -104,22 +99,9 @@ const updateScore = player => {
     element => element.name === playerName
   );
   playerScore = parseInt(playerScoreEl.textContent);
-  const modifier = event.target.dataset.key;
-
-  switch (modifier) {
-    case '+1':
-      result = playerScore + 1;
-      break;
-    case '+5':
-      result = playerScore + 5;
-      break;
-    case '-1':
-      result = playerScore - 1;
-      break;
-    case '-5':
-      result = playerScore - 5;
-      break;
-  }
+  const modifier =  parseInt(event.target.dataset.key);
+  const result = playerScore + modifier;
+ 
   playerScoreEl.textContent = result;
   updateLocalStorage(currentPlayer, result);
 };
@@ -139,34 +121,26 @@ const updateLocalStorage = (player, score) => {
   localStorage.setItem('players', JSON.stringify(storageArray));
 };
 
-function eventListeners() {
-  playersEl.addEventListener('click', () => {
-    if (activePlayer) {
-      activePlayer.classList.remove('active');
-    }
-    activePlayer = event.target.closest('.player');
-    activePlayer.classList.add('active');
-  });
-
+const eventListeners = () => {
+  playersEl.addEventListener('click', currentPlayer);
   btnEls.forEach(btn => btn.addEventListener('click', handleClickEvent));
   resetBtn.addEventListener('click', isSure);
   newGameBtn.addEventListener('click', isSure);
-}
+};
 
-function handleClickEvent() {
+const handleClickEvent = () => {
   if (activePlayer) {
     updateScore(activePlayer);
   }
-}
+};
 
-function init() {
-  generatePlayers();
-  eventListeners();
-  activePlayer = playersEl.querySelector('.player');
+const currentPlayer = () => {
   if (activePlayer) {
-    activePlayer.classList.add('active');
+    activePlayer.classList.remove('active');
   }
-}
+  activePlayer = event.target.closest('.player');
+  activePlayer.classList.add('active');
+};
 
 const resetScore = () => {
   const playerScores = document.querySelectorAll('.player__score');
@@ -198,7 +172,7 @@ const newGame = () => {
   init();
 };
 
-function isSure(event) {
+const isSure = event => {
   restartEl.classList.add('hidden');
   confirmEl.classList.remove('hidden');
   let currentEvent = event.target.dataset.restart;
@@ -217,4 +191,16 @@ function isSure(event) {
       currentEvent = '';
     });
   });
-}
+};
+
+const init = () => {
+  getFromLocalStorage();
+  generatePlayers();
+  eventListeners();
+  choosePlayers();
+  activePlayer = playersEl.querySelector('.player');
+  if (activePlayer) {
+    activePlayer.classList.add('active');
+  }
+};
+init();
