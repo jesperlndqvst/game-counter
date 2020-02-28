@@ -6,7 +6,6 @@
   box-sizing: border-box;
   outline: none;
   user-select: none;
-  -webkit-user-select: none;
   text-transform: uppercase;
   touch-action: manipulation;
 }
@@ -38,6 +37,7 @@ button {
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
+   -webkit-user-select: none;
   color: var(--color-white);
 }
 
@@ -165,6 +165,7 @@ button {
   background-color: var(--color-grey);
   transform: translateY(4px);
   user-select: none;
+   -webkit-user-select: none;
 }
 .active {
   font-weight: bold;
