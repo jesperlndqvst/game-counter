@@ -4,9 +4,9 @@ const getFromLocalStorage = () => {
   lsData = JSON.parse(localStorage.getItem('players'));
   if (lsData) {
     playerData = lsData;
+    storageArray = lsData;
     startEl.classList.add('hidden');
     counter.classList.remove('hidden');
-    storageArray = lsData;
   }
 };
 
@@ -14,21 +14,27 @@ const startGame = () => {
   formEl.addEventListener('submit', event => {
     event.preventDefault();
     inputEls.forEach(input => {
-      if (input.value) {
-        let player = {
-          name: input.value,
-          score: 0,
-          active: false
-        };
-        playerData.push(player);
-        startEl.classList.add('hidden');
-        counter.classList.remove('hidden');
-        addToLocalStorage(player);
-        input.value = '';
+      if (!input.value) {
+        return;
       }
+      const player = createPlayer(input.value);
+      input.value = '';
+      startEl.classList.add('hidden');
+      counter.classList.remove('hidden');
+      addToLocalStorage(player);
     });
     init();
   });
+};
+
+const createPlayer = userInput => {
+  const player = {
+    name: userInput,
+    score: 0,
+    active: false
+  };
+  playerData.push(player);
+  return player;
 };
 
 const choosePlayers = () => {
