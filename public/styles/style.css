@@ -37,7 +37,7 @@ button {
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
-   -webkit-user-select: none;
+  -webkit-user-select: none;
   color: var(--color-white);
 }
 
@@ -146,6 +146,11 @@ button {
   padding: 0.8rem;
 }
 
+.player__score {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .btns-container {
   min-width: 100%;
   display: flex;
@@ -165,7 +170,7 @@ button {
   background-color: var(--color-grey);
   transform: translateY(4px);
   user-select: none;
-   -webkit-user-select: none;
+  -webkit-user-select: none;
 }
 .active {
   font-weight: bold;
@@ -178,11 +183,10 @@ button {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-
-.players-btn {
+  .players-btn {
     width: 5rem;
     height: 2.5rem;
-}
+  }
 
   .restart button,
   .confirm__btn {
