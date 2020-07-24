@@ -2,7 +2,7 @@
 A minimal, easy to use and responsive game counter for all types of games that needs score taking. No installation required, use it directly in your browser. Uses local storage to save the scores in case of a game interruption.
 
 ## How to use it
-1. Clone this repo in GitHub Desktop, in your terminal or go to: https://game-counter.netlify.com/
+1. Clone this repo in GitHub Desktop, in your terminal or go to: https://game-counter1.netlify.app/
 2. Start counting!
 
 ## Preview
